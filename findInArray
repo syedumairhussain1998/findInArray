@@ -5,7 +5,14 @@ const list = async (request, response) => {
   console.log(data.length);
   response.json({ data });
 };
-module.exports = { list };
+module.exports = { list };    // finds the exact value where tags are exactly ["blank", "red"]
 
 
-// finds the exact value where tags are exactly ["blank", "red"]
+const Inventory = require("../models/Inventory");
+const list = async (request, response) => {
+  const data = await Inventory.find({ tags: { $all: ["blank", "red"] } });
+  console.log(data.length);
+  response.json({ data });
+};
+module.exports = { list };  // finds the values where tags are  ["blank", "red"]
+
